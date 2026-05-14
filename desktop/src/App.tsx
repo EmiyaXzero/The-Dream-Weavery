@@ -1,25 +1,20 @@
-import React, { useState, useEffect } from 'react'
+import { useState, useEffect } from 'react'
 import Dashboard from './components/Dashboard'
 import Wizard from './components/Wizard'
 import WorkspaceSelector from './components/WorkspaceSelector'
+import Settings from './components/Settings'
+import type { NovelInfo } from './types'
 import './styles/global.css'
 
 type Page = 'workspace' | 'dashboard' | 'wizard'
-
-interface NovelInfo {
-  name: string
-  path: string
-  genre: string
-  status: string
-}
 
 export default function App() {
   const [page, setPage] = useState<Page>('workspace')
   const [workspace, setWorkspace] = useState<string>('')
   const [novels, setNovels] = useState<NovelInfo[]>([])
   const [showWizard, setShowWizard] = useState(false)
+  const [showSettings, setShowSettings] = useState(false)
 
-  // 尝试从 localStorage 恢复工作目录
   useEffect(() => {
     const saved = localStorage.getItem('novel-workspace')
     if (saved) {
@@ -71,6 +66,9 @@ export default function App() {
               📁 {workspace.split('/').pop() || workspace.split('\\').pop()}
             </span>
           )}
+          <button className="btn-icon btn-settings" onClick={() => setShowSettings(true)} title="设置">
+            ⚙️
+          </button>
         </div>
       </div>
 
@@ -95,10 +93,11 @@ export default function App() {
         )}
 
         {showWizard && workspace && (
-          <Wizard
-            workspace={workspace}
-            onClose={handleWizardClose}
-          />
+          <Wizard workspace={workspace} onClose={handleWizardClose} />
+        )}
+
+        {showSettings && (
+          <Settings onClose={() => setShowSettings(false)} />
         )}
       </div>
     </div>

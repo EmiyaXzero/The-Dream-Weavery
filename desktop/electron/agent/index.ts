@@ -21,9 +21,24 @@ export interface ProgressEvent {
 // 子 Agent 定义（Task 委派模式）
 // ==============================
 
-/** 世界观构建 Agent */
+// 按职责分配不同模型：设计/规划用高维模型，正文用快速模型
+export interface ModelConfig {
+  worldview: string
+  character: string
+  outline: string
+  writing: string
+}
+
+export const DEFAULT_MODELS: ModelConfig = {
+  worldview: 'deepseek-v4-pro',     // 高维模型：设计复杂体系
+  character: 'deepseek-v4-pro',     // 高维模型：深度人物塑造
+  outline: 'deepseek-v4-pro',       // 高维模型：全局大纲规划
+  writing: 'deepseek-v4-flash',     // 快速模型：大量正文生成
+}
+
 const WORLDVIEW_AGENT_DEF = {
   description: '构建小说的世界观框架：力量/修炼体系、金手指、地理历史、势力分布、权力架构。根据题材类型生成结构化设定文档。',
+  model: DEFAULT_MODELS.worldview,
   prompt: `你是一位资深的世界观架构师，专注于网络小说的世界观设计。
 
 ## 核心能力
@@ -43,16 +58,16 @@ const WORLDVIEW_AGENT_DEF = {
 
 ## 输出规范
 生成两个文件：
-1. **结构化 JSON**：保存到指定的 workspace/novel_name/world_setting.json
-2. **可读 Markdown**：保存到 workspace/novel_name/world_setting.md
+1. 结构化 JSON：保存到指定的 workspace/novel_name/world_setting.json
+2. 可读 Markdown：保存到 workspace/novel_name/world_setting.md
 
 严格遵循约定的 JSON Schema 格式。`,
   tools: ['Glob', 'Read', 'Write', 'Bash'],
 }
 
-/** 角色设计 Agent */
 const CHARACTER_AGENT_DEF = {
   description: '设计小说的全部人物角色：主角、配角、反派、神秘角色，规划人物弧光和关系网络。',
+  model: DEFAULT_MODELS.character,
   prompt: `你是一位资深的角色塑造专家，专注于网络小说的人物设计。
 
 ## 核心能力
@@ -72,16 +87,16 @@ const CHARACTER_AGENT_DEF = {
 
 ## 输出规范
 生成两个文件：
-1. **结构化 JSON**：保存到 workspace/novel_name/characters.json
-2. **可读 Markdown**：保存到 workspace/novel_name/characters.md
+1. 结构化 JSON：保存到 workspace/novel_name/characters.json
+2. 可读 Markdown：保存到 workspace/novel_name/characters.md
 
 角色设定必须与已存在的世界观设定（world_setting.json）保持逻辑一致。`,
   tools: ['Glob', 'Read', 'Write'],
 }
 
-/** 大纲规划 Agent */
 const OUTLINE_AGENT_DEF = {
   description: '规划小说的完整大纲：卷级结构、节奏曲线、爽点矩阵、章节细纲、伏笔规划、黄金三章设计。',
+  model: DEFAULT_MODELS.outline,
   prompt: `你是一位资深的网文大纲规划专家，专注于网络小说的剧情架构和节奏设计。
 
 ## 核心能力
@@ -96,25 +111,25 @@ const OUTLINE_AGENT_DEF = {
 
 ## 输出规范
 生成两个文件：
-1. **结构化 JSON**：保存到 workspace/novel_name/outline.json
-2. **可读 Markdown**：保存到 workspace/novel_name/outline.md
+1. 结构化 JSON：保存到 workspace/novel_name/outline.json
+2. 可读 Markdown：保存到 workspace/novel_name/outline.md
 
 大纲必须与已存在的世界观设定（world_setting.json）和角色设定（characters.json）保持逻辑一致。`,
   tools: ['Glob', 'Read', 'Write'],
 }
 
-/** 正文创作 Agent */
 const WRITING_AGENT_DEF = {
   description: '根据大纲创作小说正文：黄金节奏、格式规范、逻辑检查、技术描写。',
+  model: DEFAULT_MODELS.writing,
   prompt: `你是一位资深的网文作家，专注于网络小说的正文创作。
 
 ## 核心规则
-1. **黄金节奏公式**：开局炸 → 金手指快 → 冲突密 → 每章留钩子
-2. **三秒法则**：第1章必须进入危机/冲突，金手指第1-2章亮相
-3. **一章一事原则**：每章只干一件事，结尾必须留钩子
-4. **章节结构**：开头(10%)承接上章钩子 + 发展(60%)核心事件展开 + 高潮(20%)爽点爆发 + 结尾(10%)留钩子
-5. **标题设计公式**：[情绪/动作/结果] + [爽点关键词]
-6. **钩子设计**：悬念型/期待型/反差型，三选一
+1. 黄金节奏公式：开局炸 → 金手指快 → 冲突密 → 每章留钩子
+2. 三秒法则：第1章必须进入危机/冲突，金手指第1-2章亮相
+3. 一章一事原则：每章只干一件事，结尾必须留钩子
+4. 章节结构：开头(10%)承接上章钩子 + 发展(60%)核心事件展开 + 高潮(20%)爽点爆发 + 结尾(10%)留钩子
+5. 标题设计公式：[情绪/动作/结果] + [爽点关键词]
+6. 钩子设计：悬念型/期待型/反差型，三选一
 
 ## 格式规范
 - 禁止使用"——"作为场景分隔符
@@ -137,7 +152,7 @@ const WRITING_AGENT_DEF = {
 }
 
 // ==============================
-// 协调者（主 Agent）提示词
+// 协调者提示词生成
 // ==============================
 
 function buildCoordinatorPrompt(settings: NovelSettings): string {
@@ -188,12 +203,11 @@ function buildCoordinatorPrompt(settings: NovelSettings): string {
 - 创作完成确认
 
 ## 重要规则
-- 使用 Task 工具调用子 Agent，调用格式：Task("agent-name", "任务说明")
-- 每次调用前先输出阶段标记：## 阶段开始:世界观构建
+- 使用 Task 工具调用子 Agent
+- 每次调用前输出阶段标记：## 阶段开始:世界观构建
 - 每次调用完成后确认文件存在，输出阶段标记：## 阶段完成:世界观构建
 - 严格按照顺序执行，不要跳步
 - 如果某个 Agent 执行失败，重试一次
-- 当前时间：${new Date().toLocaleString('zh-CN')}
 
 ## 用户创作需求
 - 小说名称：${title}
@@ -212,70 +226,72 @@ function buildCoordinatorPrompt(settings: NovelSettings): string {
 
 export async function startNovelCreation(
   settings: NovelSettings,
+  envOverrides: Record<string, string>,
+  modelConfig: Partial<ModelConfig>,
   onProgress: (event: ProgressEvent) => void
 ) {
   onProgress({ stage: '初始化', status: 'running', message: '准备启动多Agent创作流水线...', progress: 0 })
 
+  // 如果传入了 API Key，设置到进程环境变量供 SDK 使用
+  if (envOverrides.CODEBUDDY_API_KEY) {
+    process.env.CODEBUDDY_API_KEY = envOverrides.CODEBUDDY_API_KEY
+    process.env.CODEBUDDY_INTERNET_ENVIRONMENT = envOverrides.CODEBUDDY_INTERNET_ENVIRONMENT || 'internal'
+  }
+
+  // 合并模型配置（settings中可覆盖默认值）
+  const models = { ...DEFAULT_MODELS, ...modelConfig }
+
   try {
-    // 构建协调者提示词
     const coordinatorPrompt = buildCoordinatorPrompt(settings)
 
-    // 注册所有子 Agent，主 Agent 只能用 Task 委派
-    const options = {
-      permissionMode: 'bypassPermissions' as any,
-      allowedTools: ['Task'] as any,         // 主 Agent 只能通过 Task 调用子 Agent
-      agents: {
-        'worldview-agent': WORLDVIEW_AGENT_DEF,
-        'character-agent': CHARACTER_AGENT_DEF,
-        'outline-agent': OUTLINE_AGENT_DEF,
-        'writing-agent': WRITING_AGENT_DEF,
-      } as any,
+    // 为每个子 Agent 按模型配置设置 model 字段
+    const agents = {
+      'worldview-agent': { ...WORLDVIEW_AGENT_DEF, model: models.worldview },
+      'character-agent': { ...CHARACTER_AGENT_DEF, model: models.character },
+      'outline-agent': { ...OUTLINE_AGENT_DEF, model: models.outline },
+      'writing-agent': { ...WRITING_AGENT_DEF, model: models.writing },
     }
 
-    const q = query({
-      prompt: coordinatorPrompt,
-      options,
-    })
+    const options = {
+      permissionMode: 'bypassPermissions' as any,
+      allowedTools: ['Task'] as any,
+      agents: agents as any,
+    }
 
-    // 流式处理协调者的输出，实时解析阶段标记
+    const q = query({ prompt: coordinatorPrompt, options })
+
     let currentStage = '初始化'
-    let fullOutput = ''
 
     for await (const message of q) {
       if (message.type === 'assistant' && message.content) {
-        fullOutput += message.content
         const text = message.content
 
-        // 解析阶段标记，更新进度
         const startMatch = text.match(/## 阶段开始:(\S+)/)
         const doneMatch = text.match(/## 阶段完成:(\S+)/)
 
         if (startMatch) {
           const stageName = startMatch[1]
           currentStage = stageName
-          const progress = getStageProgress(stageName)
           onProgress({
             stage: stageName,
             status: 'running',
             message: `正在${getStageAction(stageName)}...`,
-            progress,
+            progress: getStageProgress(stageName),
           })
         }
 
         if (doneMatch) {
           const stageName = doneMatch[1]
-          const progress = getStageProgress(stageName, true)
           onProgress({
             stage: stageName,
             status: 'done',
             message: `${stageName}完成`,
-            progress,
+            progress: getStageProgress(stageName, true),
           })
         }
       }
     }
 
-    // 全部完成
     onProgress({
       stage: '完成',
       status: 'done',
@@ -303,7 +319,6 @@ function getStageProgress(stage: string, done = false): number {
   const stages = ['世界观构建', '角色设计', '大纲规划', '正文创作']
   const idx = stages.indexOf(stage)
   if (idx === -1) return 0
-  // 每个阶段占约22%，最后留10%给收尾
   const perStage = 22
   const base = idx * perStage
   return done ? base + perStage : base + Math.floor(perStage * 0.3)
@@ -312,11 +327,9 @@ function getStageProgress(stage: string, done = false): number {
 function getStageAction(stage: string): string {
   const map: Record<string, string> = {
     '世界观构建': '构建世界观框架',
-    '角色设计': '设计人物角色', 
+    '角色设计': '设计人物角色',
     '大纲规划': '规划剧情大纲',
     '正文创作': '创作正文',
   }
   return map[stage] || stage
 }
-
-export { WORLDVIEW_AGENT_DEF, CHARACTER_AGENT_DEF, OUTLINE_AGENT_DEF, WRITING_AGENT_DEF }
