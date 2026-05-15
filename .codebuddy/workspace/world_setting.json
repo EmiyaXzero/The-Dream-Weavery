@@ -1,0 +1,120 @@
+{
+  "book_title": "废柴靠炼丹卷成仙尊",
+  "genre": "仙侠/修仙",
+  "style": "轻松爽文",
+  "platform": "番茄小说",
+  "estimated_length": "短篇（约20万字）",
+  "core_concept": "穿越者林尘被测出三灵根废柴资质，觉醒【炼丹模拟器】系统，可以在脑海中无限模拟炼丹，零成本掌握丹方。别人炼丹费材料，他无本万利。从被赶出家族到成为修仙界丹尊，一路用丹药打脸逆袭。",
+  "unique_highlights": [
+    "炼丹模拟器金手指：零成本无限试错，模拟即可掌握丹方",
+    "丹药经济体系：用丹药垄断市场，操控修仙界经济命脉",
+    "废柴逆袭打脸：三灵根被看不起？用炼丹天赋碾压天才"
+  ],
+  "power_system": {
+    "name": "修仙九境",
+    "levels": [
+      {"name": "炼气期", "sub_levels": "1-9层", "description": "引气入体，温养经脉"},
+      {"name": "筑基期", "sub_levels": "初期/中期/后期/圆满", "description": "灵气液化，筑基成台"},
+      {"name": "金丹期", "sub_levels": "初期/中期/后期/圆满", "description": "凝丹成金，寿元五百"},
+      {"name": "元婴期", "sub_levels": "初期/中期/后期/圆满", "description": "元婴破丹，神识外放"},
+      {"name": "化神期", "sub_levels": "初期/中期/后期/圆满", "description": "元神不灭，沟通天地"}
+    ],
+    "routes": [
+      {"name": "丹修", "description": "以炼丹入道，靠丹药提升修为", "compatible": ["医修", "法修"], "incompatible": ["体修"]},
+      {"name": "剑修", "description": "以剑入道，攻击极强", "compatible": ["法修"], "incompatible": ["魂修"]},
+      {"name": "法修", "description": "法术攻击，范围伤害", "compatible": ["符修", "丹修"], "incompatible": ["体修"]},
+      {"name": "体修", "description": "炼体成圣，肉身强横", "compatible": ["武修"], "incompatible": ["法修", "丹修"]},
+      {"name": "符修", "description": "符箓攻击，灵活多变", "compatible": ["阵修"], "incompatible": []}
+    ],
+    "upgrade_methods": [
+      "吸收天地灵气（常规）",
+      "服用丹药（主角核心方式，加速修炼）",
+      "炼丹突破（炼丹时悟道突破境界）",
+      "战斗感悟（生死之间突破瓶颈）"
+    ],
+    "special_notes": "主角走丹修路线，靠炼制高品质丹药快速升级。虽然灵根差，但丹药管够，修炼速度反而远超天才。"
+  },
+  "geography": {
+    "world_name": "苍玄大陆",
+    "regions": [
+      {"name": "中州", "description": "大陆核心，顶级宗门聚集地，天才辈出", "major_forces": ["天玄宗", "万宝阁"]},
+      {"name": "东域", "description": "修仙王朝地盘，林家所在地", "major_forces": ["林家", "大夏王朝"]},
+      {"name": "南荒", "description": "妖兽横行，天材地宝丰富", "major_forces": ["万妖谷"]},
+      {"name": "西漠", "description": "佛修圣地，古老遗迹众多", "major_forces": ["金刚寺"]},
+      {"name": "北原", "description": "冰天雪地，体修聚集，盛产冰属性天材地宝", "major_forces": ["北冥宗"]}
+    ]
+  },
+  "history": {
+    "era": "末法时代中期",
+    "background": "上古仙魔大战后，天地灵气衰退，修仙界进入末法时代。大量上古丹方失传，炼丹术大幅倒退。当世炼丹师只能炼制基础丹药，高阶丹药几乎绝迹。",
+    "key_events": [
+      "上古大战导致灵气衰退",
+      "丹方失传，炼丹术没落",
+      "炼丹师地位极高但数量稀少"
+    ]
+  },
+  "forces": {
+    "major": [
+      {
+        "name": "天玄宗",
+        "rank": "顶级宗门",
+        "description": "苍玄大陆第一宗门，坐拥中州灵脉",
+        "leader": "化神期太上长老",
+        "attitude_to_protagonist": "先轻视后拉拢"
+      },
+      {
+        "name": "万宝阁",
+        "rank": "顶级商会",
+        "description": "修仙界最大的丹药/法宝交易平台",
+        "leader": "元婴期阁主",
+        "attitude_to_protagonist": "合作共赢"
+      },
+      {
+        "name": "林家",
+        "rank": "三流家族",
+        "description": "东域小家族，主角出身，族内勾心斗角",
+        "leader": "筑基期族长",
+        "attitude_to_protagonist": "先驱逐后跪求"
+      }
+    ],
+    "hidden": [
+      {
+        "name": "丹谷",
+        "rank": "隐世势力",
+        "description": "上古丹修传承势力，隐世不出，暗中观察炼丹天才",
+        "leader": "化神期谷主",
+        "attitude_to_protagonist": "关注并考察"
+      },
+      {
+        "name": "天机阁",
+        "rank": "神秘情报组织",
+        "description": "掌握修仙界最隐秘的情报，知晓主角穿越者身份",
+        "leader": "神秘阁主",
+        "attitude_to_protagonist": "观望中"
+      }
+    ]
+  },
+  "golden_finger": {
+    "core": {
+      "name": "炼丹模拟器",
+      "description": "主角穿越觉醒的逆天金手指。可以在脑海中进行炼丹模拟，零成本无限试错。模拟成功后自动掌握丹方，之后在现实中炼制即可100%成功。",
+      "evolution": {
+        "phase1": "只能模拟黄级丹药（炼气期解锁）",
+        "phase2": "可模拟玄级丹药（筑基期解锁）",
+        "phase3": "可模拟地级丹药（金丹期解锁）",
+        "phase4": "可模拟天级丹药（元婴期解锁）",
+        "phase5": "可模拟道级丹药（化神期解锁）"
+      },
+      "hidden_ability": "模拟器实际上融合了上古丹圣的残魂，当主角达到化神期时，丹圣残魂觉醒，透露模拟器的真正来历"
+    },
+    "growth_items": [
+      {"name": "乾坤鼎", "description": "主角在地摊淘到的破旧丹鼎，实为上古神器残片，可随主角炼丹水平提升而进化"},
+      {"name": "药神秘典", "description": "上古丹圣的炼丹笔记残卷，记录了许多失传丹方"}
+    ]
+  },
+  "species": [
+    {"name": "人族", "description": "修炼主流，主角所在种族"},
+    {"name": "妖族", "description": "妖兽开启灵智，部分可化形，南荒为主"},
+    {"name": "灵族", "description": "天地灵气所化，极为稀有，对炼丹师有特殊好感"}
+  ]
+}
