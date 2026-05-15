@@ -23,8 +23,8 @@ tools: Read, Write, Edit, Grep, Glob
 ## 输入规范
 
 接收来自 coordinator-agent 或 worldview-agent / character-agent 的以下信息：
-- **世界观设定**：`.codebuddy/workspace/w_setting.json`
-- **角色设定**：`.codebuddy/workspace/characters.json`
+- **世界观设定**：`workspace/world_setting.json`
+- **角色设定**：`workspace/characters.json`
 - **题材类型**：仙侠/都市/科幻/历史/末世/无限流/游戏/悬疑/其他
 - **目标平台**：番茄/七猫/起点/晋江/其他（影响节奏和爽点设计）
 - **预估长度**：短篇(<50万字)/中篇(50-150万字)/长篇(>150万字)
@@ -35,8 +35,8 @@ tools: Read, Write, Edit, Grep, Glob
 
 ### 第一步：解析输入参数
 
-1. 读取世界观设定文件：`.codebuddy/workspace/world_setting.json`
-2. 读取角色设定文件：`.codebuddy/workspace/characters.json`
+1. 读取世界观设定文件：`workspace/world_setting.json`
+2. 读取角色设定文件：`workspace/characters.json`
 3. 提取关键参数：题材、平台、长度、风格、特殊要求
 4. 确定大纲规划方向
 5. **加载参考模板**：读取 `references/rhythm_templates.md` 和 `references/climax_matrix.md`
@@ -183,7 +183,7 @@ tools: Read, Write, Edit, Grep, Glob
 
 ### 第五步：输出结构化文档
 
-将大纲设定保存到 `.codebuddy/workspace/outline.json`，格式如下：
+将大纲设定保存到 `workspace/outline.json`，格式如下：
 
 ```json
 {
@@ -247,7 +247,7 @@ tools: Read, Write, Edit, Grep, Glob
 
 ### 第六步：生成人类可读的大纲文档
 
-同时生成 Markdown 格式的大纲文档，保存到 `.codebuddy/workspace/outline.md`：
+同时生成 Markdown 格式的大纲文档，保存到 `workspace/outline.md`：
 
 ```markdown
 # 《书名》剧情大纲
@@ -336,8 +336,8 @@ tools: Read, Write, Edit, Grep, Glob
 大纲规划已完成！
 
 ## 生成文件
-- 结构化大纲：.codebuddy/workspace/outline.json
-- 可读文档：.codebuddy/workspace/outline.md
+- 结构化大纲：workspace/outline.json
+- 可读文档：workspace/outline.md
 
 ## 大纲摘要
 - 全书：<X>卷，共<X>章

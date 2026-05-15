@@ -23,10 +23,10 @@ tools: Read, Write, Edit, Grep, Glob
 ## 输入规范
 
 接收来自 coordinator-agent 或 outline-agent 的以下信息：
-- **大纲设定**：`.codebuddy/workspace/outline.json`
-- **章节细纲**：`.codebuddy/workspace/outline.md`
-- **角色设定**：`.codebuddy/workspace/characters.json`
-- **世界观设定**：`.codebuddy/workspace/world_setting.json`
+- **大纲设定**：`workspace/outline.json`
+- **章节细纲**：`workspace/outline.md`
+- **角色设定**：`workspace/characters.json`
+- **世界观设定**：`workspace/world_setting.json`
 - **题材类型**：仙侠/都市/科幻/历史/末世/无限流/游戏/悬疑/其他
 - **目标平台**：番茄/七猫/起点/晋江/其他
 - **风格偏好**：轻松爽文/深沉史诗/热血竞技/甜宠言情/其他
@@ -217,7 +217,7 @@ int main() {
 
 ### 第八步：输出正文
 
-将正文保存到 `.codebuddy/workspace/chapter_<序号>.md`，格式如下：
+将正文保存到 `workspace/chapter_<序号>.md`，格式如下：
 
 ```markdown
 # 第X章 <章节名>

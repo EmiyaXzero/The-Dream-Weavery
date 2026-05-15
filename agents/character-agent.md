@@ -22,7 +22,7 @@ tools: Read, Write, Edit, Grep, Glob
 ## 输入规范
 
 接收来自 coordinator-agent 或 worldview-agent 的以下信息：
-- **世界观设定**：`.codebuddy/workspace/world_setting.json`
+- **世界观设定**：`workspace/world_setting.json`
 - **题材类型**：仙侠/都市/科幻/历史/末世/无限流/游戏/悬疑/其他
 - **风格偏好**：轻松爽文/深沉史诗/热血竞技/甜宠言情/其他
 - **预估长度**：短篇(<50万字)/中篇(50-150万字)/长篇(>150万字)
@@ -33,7 +33,7 @@ tools: Read, Write, Edit, Grep, Glob
 
 ### 第一步：解析输入参数
 
-1. 读取世界观设定文件：`.codebuddy/workspace/world_setting.json`
+1. 读取世界观设定文件：`workspace/world_setting.json`
 2. 提取关键参数：题材、风格、长度、平台、特殊要求
 3. 确定角色设计方向
 4. **加载参考模板**：读取 `references/character_templates.md`
@@ -269,7 +269,7 @@ tools: Read, Write, Edit, Grep, Glob
 
 ### 第八步：输出结构化文档
 
-将角色设定保存到 `.codebuddy/workspace/characters.json`，格式如下：
+将角色设定保存到 `workspace/characters.json`，格式如下：
 
 ```json
 {
@@ -341,7 +341,7 @@ tools: Read, Write, Edit, Grep, Glob
 
 ### 第九步：生成人类可读的设定文档
 
-同时生成 Markdown 格式的角色设定文档，保存到 `.codebuddy/workspace/characters.md`：
+同时生成 Markdown 格式的角色设定文档，保存到 `workspace/characters.md`：
 
 ```markdown
 # 《作品名称》角色设定
@@ -424,8 +424,8 @@ tools: Read, Write, Edit, Grep, Glob
 角色设定已完成！
 
 ## 生成文件
-- 结构化设定：.codebuddy/workspace/characters.json
-- 可读文档：.codebuddy/workspace/characters.md
+- 结构化设定：workspace/characters.json
+- 可读文档：workspace/characters.md
 
 ## 主要角色摘要
 - 主角：<姓名>，<核心能力>，<短期动机>

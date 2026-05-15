@@ -60,7 +60,7 @@ tools: Read, Write, Edit, Grep, Glob, Bash(python:*), Bash(node:*)
 
 **指令 1：触发世界观构建**
 ```
-请调用 /novel-worldview Skill，根据以下需求构建世界观：
+请调用 /novel-worldview Skill,根据以下需求构建世界观:
 
 ## 创作需求
 - 题材类型：<用户提供的题材>
@@ -70,62 +70,62 @@ tools: Read, Write, Edit, Grep, Glob, Bash(python:*), Bash(node:*)
 - 特殊要求：<用户提供的特殊要求>
 
 ## 输出要求
-请生成完整的世界观设定，并保存到 .codebuddy/workspace/world_setting.json 和 world_setting.md
+请生成完整的世界观设定,并保存到 workspace/world_setting.json 和 workspace/world_setting.md
 ```
 
 **指令 2：触发角色设计（等待指令 1 完成）**
 ```
-世界观设定已完成，文件路径：.codebuddy/workspace/world_setting.json
+世界观设定已完成,文件路径：workspace/world_setting.json
 
-请调用 /novel-character Skill，根据世界观设定生成角色：
+请调用 /novel-character Skill,根据世界观设定生成角色:
 
 ## 输入文件
-- 世界观设定：.codebuddy/workspace/world_setting.json
+- 世界观设定：workspace/world_setting.json
 
 ## 输出要求
-请生成完整的角色设定，并保存到 .codebuddy/workspace/characters.json 和 characters.md
+请生成完整的角色设定,并保存到 workspace/characters.json 和 workspace/characters.md
 ```
 
 **指令 3：触发大纲规划（等待指令 2 完成）**
 ```
-角色设定已完成，文件路径：.codebuddy/workspace/characters.json
+角色设定已完成,文件路径：workspace/characters.json
 
-请调用 /novel-outline Skill，根据世界观和角色设定规划大纲：
+请调用 /novel-outline Skill,根据世界观和角色设定规划大纲:
 
 ## 输入文件
-- 世界观设定：.codebuddy/workspace/world_setting.json
-- 角色设定：.codebuddy/workspace/characters.json
+- 世界观设定：workspace/world_setting.json
+- 角色设定：workspace/characters.json
 - 目标平台：<用户提供的平台>
 
 ## 输出要求
-请生成完整的剧情大纲，并保存到 .codebuddy/workspace/outline.json 和 outline.md
+请生成完整的剧情大纲,并保存到 workspace/outline.json 和 workspace/outline.md
 ```
 
 **指令 4：触发正文创作（等待指令 3 完成）**
 ```
-大纲规划已完成，文件路径：.codebuddy/workspace/outline.json
+大纲规划已完成,文件路径：workspace/outline.json
 
-请调用 /novel-writing Skill，根据大纲和设定创作正文：
+请调用 /novel-writing Skill,根据大纲和设定创作正文:
 
 ## 输入文件
-- 世界观设定：.codebuddy/workspace/world_setting.json
-- 角色设定：.codebuddy/workspace/characters.json
-- 剧情大纲：.codebuddy/workspace/outline.json
+- 世界观设定：workspace/world_setting.json
+- 角色设定：workspace/characters.json
+- 剧情大纲：workspace/outline.json
 
 ## 输出要求
-请创作正文内容，并保存到 .codebuddy/workspace/chapter_*.md
+请创作正文内容,并保存到 workspace/chapter_*.md
 ```
 
 ### 第三阶段：结果整合与质量评估
 
 1. **收集所有输出文件**：
-   - `.codebuddy/workspace/world_setting.json`
-   - `.codebuddy/workspace/world_setting.md`
-   - `.codebuddy/workspace/characters.json`
-   - `.codebuddy/workspace/characters.md`
-   - `.codebuddy/workspace/outline.json`
-   - `.codebuddy/workspace/outline.md`
-   - `.codebuddy/workspace/chapter_*.md`
+   - `workspace/world_setting.json`
+   - `workspace/world_setting.md`
+   - `workspace/characters.json`
+   - `workspace/characters.md`
+   - `workspace/outline.json`
+   - `workspace/outline.md`
+   - `workspace/chapter_*.md`
 
 2. **逻辑检查协调**：
    - 检查角色能力是否与世界观的力量体系匹配
@@ -175,13 +175,13 @@ tools: Read, Write, Edit, Grep, Glob, Bash(python:*), Bash(node:*)
 # 创作成果汇总报告
 
 ## 生成文件清单
-1. 世界观设定：.codebuddy/workspace/world_setting.json
-2. 世界观文档：.codebuddy/workspace/world_setting.md
-3. 角色设定：.codebuddy/workspace/characters.json
-4. 角色文档：.codebuddy/workspace/characters.md
-5. 剧情大纲：.codebuddy/workspace/outline.json
-6. 大纲文档：.codebuddy/workspace/outline.md
-7. 正文样章：.codebuddy/workspace/chapter_01.md
+1. 世界观设定：workspace/world_setting.json
+2. 世界观文档：workspace/world_setting.md
+3. 角色设定：workspace/characters.json
+4. 角色文档：workspace/characters.md
+5. 剧情大纲：workspace/outline.json
+6. 大纲文档：workspace/outline.md
+7. 正文样章：workspace/chapter_01.md
 
 ## 逻辑一致性检查
 - 角色能力与力量体系：✅ 匹配

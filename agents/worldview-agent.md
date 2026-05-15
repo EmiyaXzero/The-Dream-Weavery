@@ -33,7 +33,7 @@ tools: Read, Write, Edit, Grep, Glob, Bash(python:*), Bash(node:*)
 
 ### 第一步：解析输入参数
 
-1. 读取输入文件（如有）：`.codebuddy/workspace/user_requirements.json`
+1. 读取输入文件（如有）：`workspace/user_requirements.json`
 2. 提取关键参数：题材、风格、长度、平台、特殊要求
 3. 确定世界观设计方向
 4. **加载题材参考模板**：根据题材类型，读取 `references/genre_<类型>.md`（见下方「题材模板映射表」）
@@ -122,7 +122,7 @@ tools: Read, Write, Edit, Grep, Glob, Bash(python:*), Bash(node:*)
 
 ### 第四步：输出结构化文档
 
-将世界观设定保存到 `.codebuddy/workspace/world_setting.json`，格式如下：
+将世界观设定保存到 `workspace/world_setting.json`，格式如下：
 
 ```json
 {
@@ -211,7 +211,7 @@ tools: Read, Write, Edit, Grep, Glob, Bash(python:*), Bash(node:*)
 
 ### 第五步：生成人类可读的设定文档
 
-同时生成 Markdown 格式的世界观文档，保存到 `.codebuddy/workspace/world_setting.md`：
+同时生成 Markdown 格式的世界观文档，保存到 `workspace/world_setting.md`：
 
 ```markdown
 # 《世界名称》世界观设定
@@ -332,8 +332,8 @@ tools: Read, Write, Edit, Grep, Glob, Bash(python:*), Bash(node:*)
 世界观设定已完成！
 
 ## 生成文件
-- 结构化设定：.codebuddy/workspace/world_setting.json
-- 可读文档：.codebuddy/workspace/world_setting.md
+- 结构化设定：workspace/world_setting.json
+- 可读文档：workspace/world_setting.md
 
 ## 世界观核心要素摘要
 - 力量体系：<体系名称>，共<X>级
