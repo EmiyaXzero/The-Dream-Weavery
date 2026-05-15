@@ -36,14 +36,14 @@ trigger:
 
 ## 输入文件
 
-- 世界观设定：`.codebuddy/workspace/world_setting.json`
-- 角色设定：`.codebuddy/workspace/characters.json`
+- 世界观设定：当前项目根目录下的 `world_setting.json` 或用户指定路径
+- 角色设定：当前项目根目录下的 `characters.json` 或用户指定路径
 - 创作需求：题材、平台、长度、风格、特殊要求
 
 ## 输出文件
 
-- `.codebuddy/workspace/outline.json` — 结构化大纲
-- `.codebuddy/workspace/outline.md` — 人类可读的大纲文档
+- `./outline.json` — 结构化大纲，保存在当前项目根目录
+- `./outline.md` — 人类可读的大纲文档，保存在当前项目根目录
 
 ## 大纲规划参考
 

@@ -36,13 +36,13 @@ trigger:
 
 ## 输入文件
 
-- 世界观设定：`.codebuddy/workspace/world_setting.json`
+- 世界观设定：当前项目根目录下的 `world_setting.json` 或用户指定路径
 - 创作需求：题材、风格、长度、平台、特殊要求
 
 ## 输出文件
 
-- `.codebuddy/workspace/characters.json` — 结构化角色设定
-- `.codebuddy/workspace/characters.md` — 人类可读的角色文档
+- `./characters.json` — 结构化角色设定，保存在当前项目根目录
+- `./characters.md` — 人类可读的角色文档，保存在当前项目根目录
 
 ## 人物塑造参考
 

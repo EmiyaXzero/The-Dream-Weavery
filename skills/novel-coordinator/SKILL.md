@@ -42,13 +42,13 @@ trigger:
 
 ## 输出文件
 
-- `.codebuddy/workspace/world_setting.json` — 结构化世界观设定
-- `.codebuddy/workspace/world_setting.md` — 人类可读的世界观文档
-- `.codebuddy/workspace/characters.json` — 结构化角色设定
-- `.codebuddy/workspace/characters.md` — 人类可读的角色文档
-- `.codebuddy/workspace/outline.json` — 结构化大纲
-- `.codebuddy/workspace/outline.md` — 人类可读的大纲文档
-- `.codebuddy/workspace/chapter_*.md` — 章节正文
+- `./world_setting.json` — 结构化世界观设定
+- `./world_setting.md` — 人类可读的世界观文档
+- `./characters.json` — 结构化角色设定
+- `./characters.md` — 人类可读的角色文档
+- `./outline.json` — 结构化大纲
+- `./outline.md` — 人类可读的大纲文档
+- `./第<序号>章.txt` — 章节正文，每章一个独立文件
 
 ## 质量评估维度
 
@@ -159,13 +159,13 @@ trigger:
 # 创作成果汇总报告
 
 ## 生成文件清单
-1. 世界观设定：.codebuddy/workspace/world_setting.json
-2. 世界观文档：.codebuddy/workspace/world_setting.md
-3. 角色设定：.codebuddy/workspace/characters.json
-4. 角色文档：.codebuddy/workspace/characters.md
-5. 剧情大纲：.codebuddy/workspace/outline.json
-6. 大纲文档：.codebuddy/workspace/outline.md
-7. 正文样章：.codebuddy/workspace/chapter_01.md
+1. 世界观设定：./world_setting.json
+2. 世界观文档：./world_setting.md
+3. 角色设定：./characters.json
+4. 角色文档：./characters.md
+5. 剧情大纲：./outline.json
+6. 大纲文档：./outline.md
+7. 正文样章：./第1章.txt
 
 ## 逻辑一致性检查
 - 角色能力与力量体系：✅ 匹配

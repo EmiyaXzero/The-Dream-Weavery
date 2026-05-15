@@ -49,8 +49,8 @@ trigger:
 
 ## 输出文件
 
-- `.codebuddy/workspace/world_setting.json` — 结构化世界观设定
-- `.codebuddy/workspace/world_setting.md` — 人类可读的世界观文档
+- `./world_setting.json` — 结构化世界观设定，保存在当前项目根目录
+- `./world_setting.md` — 人类可读的世界观文档，保存在当前项目根目录
 
 ## 题材参考模板
 
